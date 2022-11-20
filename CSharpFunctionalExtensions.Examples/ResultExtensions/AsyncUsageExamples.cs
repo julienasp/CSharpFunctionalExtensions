@@ -9,7 +9,7 @@ namespace CSharpFunctionalExtensions.Examples.ResultExtensions
             var gateway = new EmailGateway();
 
             return await GetByIdAsync(id)
-                .ToResult("Customer with such Id is not found: " + id)
+                .ToResultAsync("Customer with such Id is not found: " + id)
                 .Ensure(customer => customer.CanBePromoted(), "The customer has the highest status possible")
                 .Tap(customer => customer.Promote())
                 .Bind(customer => gateway.SendPromotionNotification(customer.Email))
@@ -21,7 +21,7 @@ namespace CSharpFunctionalExtensions.Examples.ResultExtensions
             var gateway = new EmailGateway();
 
             return await GetByIdAsync(id)
-                .ToResult("Customer with such Id is not found: " + id)
+                .ToResultAsync("Customer with such Id is not found: " + id)
                 .Ensure(customer => customer.CanBePromoted(), "The customer has the highest status possible")
                 .Tap(customer => customer.PromoteAsync())
                 .Bind(customer => gateway.SendPromotionNotificationAsync(customer.Email))
@@ -33,7 +33,7 @@ namespace CSharpFunctionalExtensions.Examples.ResultExtensions
             var gateway = new EmailGateway();
 
             return await GetByIdAsync(id)
-                .ToResult("Customer with such Id is not found: " + id)
+                .ToResultAsync("Customer with such Id is not found: " + id)
                 .Ensure(customer => customer.CanBePromoted(), "Need to ask manager")
                 .TapError(error => Log(error))
                 .OnFailureCompensate(() => AskManager(id))
