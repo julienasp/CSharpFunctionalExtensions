@@ -5,7 +5,7 @@ namespace CSharpFunctionalExtensions
 {
     public static partial class MaybeExtensions
     {
-        public static async Task<Maybe<T>> Where<T>(this Maybe<T> maybe, Func<T, Task<bool>> predicate)
+        public static async Task<Maybe<T>> WhereAsync<T>(this Maybe<T> maybe, Func<T, Task<bool>> predicate)
         {
             if (maybe.HasNoValue)
                 return Maybe<T>.None;

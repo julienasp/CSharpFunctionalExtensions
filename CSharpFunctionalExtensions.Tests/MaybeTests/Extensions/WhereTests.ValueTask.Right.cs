@@ -12,7 +12,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         {
             Maybe<T> maybe = T.Value;
 
-            var maybe2 = await maybe.Where(ExpectAndReturn_ValueTask(T.Value, true));
+            var maybe2 = await maybe.WhereAsync(ExpectAndReturn_ValueTask(T.Value, true));
 
             maybe2.HasValue.Should().BeTrue();
             maybe2.Value.Should().Be(T.Value);
@@ -23,7 +23,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         {
             Maybe<T> maybe = T.Value;
 
-            var maybe2 = await maybe.Where(ExpectAndReturn_ValueTask(T.Value, false));
+            var maybe2 = await maybe.WhereAsync(ExpectAndReturn_ValueTask(T.Value, false));
 
             maybe2.HasValue.Should().BeFalse();
         }
@@ -35,7 +35,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         {
             Maybe<T> maybe = null;
 
-            var maybe2 = await maybe.Where(ExpectAndReturn_ValueTask(null, predicateResult));
+            var maybe2 = await maybe.WhereAsync(ExpectAndReturn_ValueTask(null, predicateResult));
 
             maybe2.HasValue.Should().BeFalse();
         }
