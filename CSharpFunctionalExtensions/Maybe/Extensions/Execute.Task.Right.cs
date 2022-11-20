@@ -11,7 +11,7 @@ namespace CSharpFunctionalExtensions
         /// <param name="maybe"></param>
         /// <param name="action"></param>
         /// <typeparam name="T"></typeparam>
-        public static async Task Execute<T>(this Maybe<T> maybe, Func<T, Task> action)
+        public static async Task ExecuteAsync<T>(this Maybe<T> maybe, Func<T, Task> action)
         {
             if (maybe.HasNoValue)
                 return;
