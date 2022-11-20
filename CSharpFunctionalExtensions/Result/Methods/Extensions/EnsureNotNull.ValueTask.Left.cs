@@ -11,25 +11,25 @@ namespace CSharpFunctionalExtensions.ValueTasks
         public static ValueTask<Result<T>> EnsureNotNull<T>(this ValueTask<Result<T?>> resultTask, Func<string> errorFactory)
             where T : class
         {
-            return resultTask.Ensure(value => value != null, _ => errorFactory()).Map(value => value!);
+            return resultTask.Ensure(value => value != null, _ => errorFactory()).MapAsync(value => value!);
         }
 
         public static ValueTask<Result<T>> EnsureNotNull<T>(this ValueTask<Result<T?>> resultTask, Func<string> errorFactory)
             where T : struct
         {
-            return resultTask.Ensure(value => value != null, _ => errorFactory()).Map(value => value!.Value);
+            return resultTask.Ensure(value => value != null, _ => errorFactory()).MapAsync(value => value!.Value);
         }
 
         public static ValueTask<Result<T, E>> EnsureNotNull<T, E>(this ValueTask<Result<T?, E>> resultTask, Func<E> errorFactory)
             where T : class
         {
-            return resultTask.Ensure(value => ValueTask.FromResult(value != null), _ => errorFactory()).Map(value => value!);
+            return resultTask.Ensure(value => ValueTask.FromResult(value != null), _ => errorFactory()).MapAsync(value => value!);
         }
 
         public static ValueTask<Result<T, E>> EnsureNotNull<T, E>(this ValueTask<Result<T?, E>> resultTask, Func<E> errorFactory)
             where T : struct
         {
-            return resultTask.Ensure(value => ValueTask.FromResult(value != null), _ => errorFactory()).Map(value => value!.Value);
+            return resultTask.Ensure(value => ValueTask.FromResult(value != null), _ => errorFactory()).MapAsync(value => value!.Value);
         }
     }
 }

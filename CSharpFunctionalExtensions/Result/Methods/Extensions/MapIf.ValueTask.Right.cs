@@ -13,7 +13,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
                 return result.AsCompletedValueTask();
             }
 
-            return result.Map(valueTask);
+            return result.MapAsync(valueTask);
         }
 
         public static ValueTask<Result<T, E>> MapIf<T, E>(this Result<T, E> result, bool condition, Func<T, ValueTask<T>> valueTask)
@@ -23,7 +23,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
                 return result.AsCompletedValueTask();
             }
 
-            return result.Map(valueTask);
+            return result.MapAsync(valueTask);
         }
 
         public static ValueTask<Result<T>> MapIf<T>(this Result<T> result, Func<T, bool> predicate, Func<T, ValueTask<T>> valueTask)
@@ -33,7 +33,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
                 return result.AsCompletedValueTask();
             }
 
-            return result.Map(valueTask);
+            return result.MapAsync(valueTask);
         }
 
         public static ValueTask<Result<T, E>> MapIf<T, E>(this Result<T, E> result, Func<T, bool> predicate, Func<T, ValueTask<T>> valueTask)
@@ -43,7 +43,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
                 return result.AsCompletedValueTask();
             }
 
-            return result.Map(valueTask);
+            return result.MapAsync(valueTask);
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<T, ValueTask<Result>> valueTask)
         {
             Result<T> result = await resultTask;
-            return await result.Bind(valueTask).Map(() => result.Value);
+            return await result.Bind(valueTask).MapAsync(() => result.Value);
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<T, ValueTask<Result<K>>> valueTask)
         {
             Result<T> result = await resultTask;
-            return await result.Bind(valueTask).Map(_ => result.Value);
+            return await result.Bind(valueTask).MapAsync(_ => result.Value);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<T, ValueTask<Result<K, E>>> valueTask)
         {
             Result<T, E> result = await resultTask;
-            return await result.Bind(valueTask).Map(_ => result.Value);
+            return await result.Bind(valueTask).MapAsync(_ => result.Value);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<T, ValueTask<UnitResult<E>>> valueTask)
         {
             Result<T, E> result = await resultTask;
-            return await result.Bind(valueTask).Map(() => result.Value);
+            return await result.Bind(valueTask).MapAsync(() => result.Value);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
             Func<ValueTask<UnitResult<E>>> valueTask)
         {
             UnitResult<E> result = await resultTask;
-            return await result.Bind(valueTask).Map(() => result);
+            return await result.Bind(valueTask).MapAsync(() => result);
         }
     }
 }

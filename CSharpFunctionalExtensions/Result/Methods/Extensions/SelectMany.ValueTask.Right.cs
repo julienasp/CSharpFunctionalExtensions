@@ -16,7 +16,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         {
             return result
                 .Bind(valueTask)
-                .Map(x => project(result.Value, x));
+                .MapAsync(x => project(result.Value, x));
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         {
             return result
                 .Bind(valueTask)
-                .Map(x => project(result.Value, x));
+                .MapAsync(x => project(result.Value, x));
         }
     }
 }
