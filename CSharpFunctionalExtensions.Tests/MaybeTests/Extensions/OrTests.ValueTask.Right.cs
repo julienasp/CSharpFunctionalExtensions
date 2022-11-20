@@ -12,7 +12,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         {
             Maybe<T> maybe = T.Value;
 
-            var maybe2 = await maybe.Or(() => T.Value2.AsValueTask());
+            var maybe2 = await maybe.OrAsync(() => T.Value2.AsValueTask());
 
             maybe2.HasValue.Should().BeTrue();
             maybe2.Should().Be(T.Value);
@@ -23,7 +23,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         {
             var maybeValueTask = Maybe<T>.None;
 
-            var maybe2 = await maybeValueTask.Or(() => T.Value2.AsValueTask());
+            var maybe2 = await maybeValueTask.OrAsync(() => T.Value2.AsValueTask());
 
             maybe2.HasValue.Should().BeTrue();
             maybe2.Should().Be(T.Value2);

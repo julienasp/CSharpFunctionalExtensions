@@ -13,7 +13,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <param name="fallback"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static async ValueTask<Maybe<T>> Or<T>(this ValueTask<Maybe<T>> maybeTask, T fallback)
+        public static async ValueTask<Maybe<T>> OrAsync<T>(this ValueTask<Maybe<T>> maybeTask, T fallback)
         {
             Maybe<T> maybe = await maybeTask;
 
@@ -30,7 +30,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <param name="fallbackOperation"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static async ValueTask<Maybe<T>> Or<T>(this ValueTask<Maybe<T>> maybeTask, Func<T> fallbackOperation)
+        public static async ValueTask<Maybe<T>> OrAsync<T>(this ValueTask<Maybe<T>> maybeTask, Func<T> fallbackOperation)
         {
             Maybe<T> maybe = await maybeTask;
 
@@ -47,7 +47,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <param name="fallback"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static async ValueTask<Maybe<T>> Or<T>(this ValueTask<Maybe<T>> maybeTask, Maybe<T> fallback)
+        public static async ValueTask<Maybe<T>> OrAsync<T>(this ValueTask<Maybe<T>> maybeTask, Maybe<T> fallback)
         {
             Maybe<T> maybe = await maybeTask;
 
@@ -64,7 +64,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <param name="fallbackOperation"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static async ValueTask<Maybe<T>> Or<T>(this ValueTask<Maybe<T>> maybeTask, Func<Maybe<T>> fallbackOperation)
+        public static async ValueTask<Maybe<T>> OrAsync<T>(this ValueTask<Maybe<T>> maybeTask, Func<Maybe<T>> fallbackOperation)
         {
             Maybe<T> maybe = await maybeTask;
 
