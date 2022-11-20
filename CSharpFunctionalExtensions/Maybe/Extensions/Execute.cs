@@ -17,5 +17,10 @@ namespace CSharpFunctionalExtensions
 
             action(maybe.GetValueOrThrow());
         }
+
+        public static Maybe<K> Execute<T, K>(in this Maybe<T> maybe, Func<T, K> func)
+        {
+            return maybe.Map(func);
+        }
     }
 }
