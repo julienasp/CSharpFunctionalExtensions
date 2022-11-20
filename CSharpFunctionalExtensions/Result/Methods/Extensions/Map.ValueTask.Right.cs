@@ -9,7 +9,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <summary>
         ///     Creates a new result from the return value of a given valueTask action. If the calling Result is a failure, a new failure result is returned instead.
         /// </summary>
-        public static async ValueTask<Result<K, E>> Map<T, K, E>(this Result<T, E> result, Func<T, ValueTask<K>> valueTask)
+        public static async ValueTask<Result<K, E>> MapAsync<T, K, E>(this Result<T, E> result, Func<T, ValueTask<K>> valueTask)
         {
             if (result.IsFailure)
                 return Result.Failure<K, E>(result.Error);
@@ -22,7 +22,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <summary>
         ///     Creates a new result from the return value of a given valueTask action. If the calling Result is a failure, a new failure result is returned instead.
         /// </summary>
-        public static async ValueTask<Result<K, E>> Map<K, E>(this UnitResult<E> result, Func<ValueTask<K>> valueTask) 
+        public static async ValueTask<Result<K, E>> MapAsync<K, E>(this UnitResult<E> result, Func<ValueTask<K>> valueTask) 
         {
             if (result.IsFailure)
                 return Result.Failure<K, E>(result.Error);
@@ -35,7 +35,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <summary>
         ///     Creates a new result from the return value of a given valueTask action. If the calling Result is a failure, a new failure result is returned instead.
         /// </summary>
-        public static async ValueTask<Result<K>> Map<T, K>(this Result<T> result, Func<T, ValueTask<K>> valueTask)
+        public static async ValueTask<Result<K>> MapAsync<T, K>(this Result<T> result, Func<T, ValueTask<K>> valueTask)
         {
             if (result.IsFailure)
                 return Result.Failure<K>(result.Error);
@@ -48,7 +48,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <summary>
         ///     Creates a new result from the return value of a given valueTask action. If the calling Result is a failure, a new failure result is returned instead.
         /// </summary>
-        public static async ValueTask<Result<K>> Map<T, K>(this Result<T> result, Func<T, ValueTask<Result<K>>> valueTask)
+        public static async ValueTask<Result<K>> MapAsync<T, K>(this Result<T> result, Func<T, ValueTask<Result<K>>> valueTask)
         {
             if (result.IsFailure)
                 return Result.Failure<K>(result.Error);
@@ -60,7 +60,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <summary>
         ///     Creates a new result from the return value of a given valueTask action. If the calling Result is a failure, a new failure result is returned instead.
         /// </summary>
-        public static async ValueTask<Result<K>> Map<K>(this Result result, Func<ValueTask<K>> valueTask)
+        public static async ValueTask<Result<K>> MapAsync<K>(this Result result, Func<ValueTask<K>> valueTask)
         {
             if (result.IsFailure)
                 return Result.Failure<K>(result.Error);
