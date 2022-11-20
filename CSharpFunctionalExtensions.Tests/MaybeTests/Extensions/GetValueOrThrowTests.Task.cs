@@ -13,7 +13,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         {
             const string errorMessage = "Maybe is none";
 
-            Func<Task<int>> func = () => Maybe<int>.None.AsTask().GetValueOrThrow(errorMessage);
+            Func<Task<int>> func = () => Maybe<int>.None.AsTask().GetValueOrThrowAsync(errorMessage);
 
             await func.Should().ThrowAsync<InvalidOperationException>().WithMessage(errorMessage);
         }
@@ -25,7 +25,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
             var maybe = Maybe.From(value).AsTask();
             
             const string errorMessage = "Maybe is none";
-            var result = await maybe.GetValueOrThrow(errorMessage);
+            var result = await maybe.GetValueOrThrowAsync(errorMessage);
 
             result.Should().Be(value);
         }

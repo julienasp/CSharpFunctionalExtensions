@@ -6,7 +6,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
 {
     public static partial class MaybeExtensions
     {
-        public static async ValueTask<T> GetValueOrThrow<T>(this ValueTask<Maybe<T>> maybeTask)
+        public static async ValueTask<T> GetValueOrThrowAsync<T>(this ValueTask<Maybe<T>> maybeTask)
         {
             var maybe = await maybeTask;
             return maybe.GetValueOrThrow();
@@ -17,7 +17,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         ///     with <paramref name="errorMessage" />
         /// </summary>
         /// <exception cref="InvalidOperationException">Maybe has no value.</exception>
-        public static async ValueTask<T> GetValueOrThrow<T>(this ValueTask<Maybe<T>> maybeTask, string errorMessage)
+        public static async ValueTask<T> GetValueOrThrowAsync<T>(this ValueTask<Maybe<T>> maybeTask, string errorMessage)
         {
             var maybe = await maybeTask;
             return maybe.GetValueOrThrow(errorMessage);
