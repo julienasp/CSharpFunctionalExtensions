@@ -11,7 +11,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         {
             Maybe<T> instance = null;
             
-            await instance.AsTask().Execute(value =>
+            await instance.AsTask().ExecuteAsync(value =>
             {
                 instance = T.Value;
                 return Task.CompletedTask;
@@ -25,7 +25,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
         {
             Maybe<T> instance = T.Value;
 
-            await instance.AsTask().Execute(value =>
+            await instance.AsTask().ExecuteAsync(value =>
             {
                 value.Should().Be(T.Value);
                 return Task.CompletedTask;
