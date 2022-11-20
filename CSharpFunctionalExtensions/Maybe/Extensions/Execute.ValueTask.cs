@@ -13,7 +13,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
         /// <param name="valueTask"></param>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static async Task Execute<T>(this ValueTask<Maybe<T>> maybeTask, Func<T, ValueTask> valueTask)
+        public static async Task ExecuteAsync<T>(this ValueTask<Maybe<T>> maybeTask, Func<T, ValueTask> valueTask)
         {
             var maybe = await maybeTask;
 
