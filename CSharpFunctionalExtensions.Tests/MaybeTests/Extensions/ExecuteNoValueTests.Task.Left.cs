@@ -13,7 +13,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
 
             Maybe<T> maybe = null;
 
-            await maybe.AsTask().ExecuteNoValue(() => property = "Some value");
+            await maybe.AsTask().ExecuteNoValueAsync(() => property = "Some value");
 
             property.Should().Be("Some value");
         }
