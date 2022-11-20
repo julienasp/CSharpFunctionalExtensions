@@ -5,7 +5,7 @@ namespace CSharpFunctionalExtensions
 {
     public static partial class MaybeExtensions
     {
-        public static async Task<T> GetValueOrDefault<T>(this Maybe<T> maybe, Func<Task<T>> defaultValue)
+        public static async Task<T> GetValueOrDefaultAsync<T>(this Maybe<T> maybe, Func<Task<T>> defaultValue)
         {
             if (maybe.HasNoValue)
                 return await defaultValue().DefaultAwait();
@@ -13,7 +13,7 @@ namespace CSharpFunctionalExtensions
             return maybe.GetValueOrThrow();
         }
 
-        public static async Task<K> GetValueOrDefault<T, K>(this Maybe<T> maybe, Func<T, K> selector,
+        public static async Task<K> GetValueOrDefaultAsync<T, K>(this Maybe<T> maybe, Func<T, K> selector,
             Func<Task<K>> defaultValue)
         {
             if (maybe.HasNoValue)
@@ -22,7 +22,7 @@ namespace CSharpFunctionalExtensions
             return selector(maybe.GetValueOrThrow());
         }
 
-        public static async Task<K> GetValueOrDefault<T, K>(this Maybe<T> maybe, Func<T, Task<K>> selector,
+        public static async Task<K> GetValueOrDefaultAsync<T, K>(this Maybe<T> maybe, Func<T, Task<K>> selector,
             K defaultValue = default)
         {
             if (maybe.HasNoValue)
@@ -31,7 +31,7 @@ namespace CSharpFunctionalExtensions
             return await selector(maybe.GetValueOrThrow()).DefaultAwait();
         }
 
-        public static async Task<K> GetValueOrDefault<T, K>(this Maybe<T> maybe, Func<T, Task<K>> selector,
+        public static async Task<K> GetValueOrDefaultAsync<T, K>(this Maybe<T> maybe, Func<T, Task<K>> selector,
             Func<Task<K>> defaultValue)
         {
             if (maybe.HasNoValue)
