@@ -6,7 +6,7 @@ namespace CSharpFunctionalExtensions.ValueTasks
 {
     public static partial class MaybeExtensions
     {
-        public static async ValueTask<Maybe<K>> Map<T, K>(this Maybe<T> maybe, Func<T, ValueTask<K>> valueTask)
+        public static async ValueTask<Maybe<K>> MapAsync<T, K>(this Maybe<T> maybe, Func<T, ValueTask<K>> valueTask)
         {
             if (maybe.HasNoValue)
                 return Maybe<K>.None;
