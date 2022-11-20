@@ -14,7 +14,7 @@ namespace CSharpFunctionalExtensions.Tests.MaybeTests.Extensions
 
             Maybe<T> maybe = null;
 
-            await maybe.AsValueTask().ExecuteNoValue(() =>
+            await maybe.AsValueTask().ExecuteNoValueAsync(() =>
             {
                 property = "Some value";
                 return ValueTask.CompletedTask;
